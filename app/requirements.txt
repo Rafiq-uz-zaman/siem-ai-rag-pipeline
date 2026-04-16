@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+elasticsearch>=8.0.0,<9.0.0
+redis
+celery
+sentence-transformers
+numpy
+pydantic
+tenacity
+python-dotenv
+prometheus-client
+langchain
+langchain-community

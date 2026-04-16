@@ -1,0 +1,3940 @@
+{
+    "index_patterns": [
+        "wazuh-alerts-4.x-remap-*"
+    ],
+    "priority": 900,
+    "template": {
+        "settings": {
+            "index": {
+                "max_result_window": "9500000",
+                "routing": {
+                    "allocation": {
+                        "include": {
+                            "_tier_preference": "data_content"
+                        }
+                    }
+                },
+                "mapping": {
+                    "total_fields": {
+                        "limit": "10000"
+                    }
+                },
+                "refresh_interval": "5s",
+                "number_of_shards": "3",
+                "auto_expand_replicas": "0-1",
+                "query": {
+                    "default_field": [
+                        "GeoLocation.city_name",
+                        "GeoLocation.continent_code",
+                        "GeoLocation.country_code2",
+                        "GeoLocation.country_code3",
+                        "GeoLocation.country_name",
+                        "GeoLocation.ip",
+                        "GeoLocation.postal_code",
+                        "GeoLocation.real_region_name",
+                        "GeoLocation.region_name",
+                        "GeoLocation.timezone",
+                        "agent.id",
+                        "agent.ip",
+                        "agent.name",
+                        "cluster.name",
+                        "cluster.node",
+                        "command",
+                        "data",
+                        "data.action",
+                        "data.audit",
+                        "data.audit.acct",
+                        "data.audit.arch",
+                        "data.audit.auid",
+                        "data.audit.command",
+                        "data.audit.cwd",
+                        "data.audit.dev",
+                        "data.audit.directory.inode",
+                        "data.audit.directory.mode",
+                        "data.audit.directory.name",
+                        "data.audit.egid",
+                        "data.audit.enforcing",
+                        "data.audit.euid",
+                        "data.audit.exe",
+                        "data.audit.execve.a0",
+                        "data.audit.execve.a1",
+                        "data.audit.execve.a2",
+                        "data.audit.execve.a3",
+                        "data.audit.exit",
+                        "data.audit.file.inode",
+                        "data.audit.file.mode",
+                        "data.audit.file.name",
+                        "data.audit.fsgid",
+                        "data.audit.fsuid",
+                        "data.audit.gid",
+                        "data.audit.id",
+                        "data.audit.key",
+                        "data.audit.list",
+                        "data.audit.old-auid",
+                        "data.audit.old-ses",
+                        "data.audit.old_enforcing",
+                        "data.audit.old_prom",
+                        "data.audit.op",
+                        "data.audit.pid",
+                        "data.audit.ppid",
+                        "data.audit.prom",
+                        "data.audit.res",
+                        "data.audit.session",
+                        "data.audit.sgid",
+                        "data.audit.srcip",
+                        "data.audit.subj",
+                        "data.audit.success",
+                        "data.audit.suid",
+                        "data.audit.syscall",
+                        "data.audit.tty",
+                        "data.audit.uid",
+                        "data.aws.accountId",
+                        "data.aws.account_id",
+                        "data.aws.action",
+                        "data.aws.actor",
+                        "data.aws.aws_account_id",
+                        "data.aws.description",
+                        "data.aws.dstport",
+                        "data.aws.errorCode",
+                        "data.aws.errorMessage",
+                        "data.aws.eventID",
+                        "data.aws.eventName",
+                        "data.aws.eventSource",
+                        "data.aws.eventType",
+                        "data.aws.id",
+                        "data.aws.name",
+                        "data.aws.requestParameters.accessKeyId",
+                        "data.aws.requestParameters.bucketName",
+                        "data.aws.requestParameters.gatewayId",
+                        "data.aws.requestParameters.groupDescription",
+                        "data.aws.requestParameters.groupId",
+                        "data.aws.requestParameters.groupName",
+                        "data.aws.requestParameters.host",
+                        "data.aws.requestParameters.hostedZoneId",
+                        "data.aws.requestParameters.instanceId",
+                        "data.aws.requestParameters.instanceProfileName",
+                        "data.aws.requestParameters.loadBalancerName",
+                        "data.aws.requestParameters.loadBalancerPorts",
+                        "data.aws.requestParameters.masterUserPassword",
+                        "data.aws.requestParameters.masterUsername",
+                        "data.aws.requestParameters.name",
+                        "data.aws.requestParameters.natGatewayId",
+                        "data.aws.requestParameters.networkAclId",
+                        "data.aws.requestParameters.path",
+                        "data.aws.requestParameters.policyName",
+                        "data.aws.requestParameters.port",
+                        "data.aws.requestParameters.stackId",
+                        "data.aws.requestParameters.stackName",
+                        "data.aws.requestParameters.subnetId",
+                        "data.aws.requestParameters.subnetIds",
+                        "data.aws.requestParameters.volumeId",
+                        "data.aws.requestParameters.vpcId",
+                        "data.aws.resource.accessKeyDetails.accessKeyId",
+                        "data.aws.resource.accessKeyDetails.principalId",
+                        "data.aws.resource.accessKeyDetails.userName",
+                        "data.aws.resource.instanceDetails.instanceId",
+                        "data.aws.resource.instanceDetails.instanceState",
+                        "data.aws.resource.instanceDetails.networkInterfaces.privateDnsName",
+                        "data.aws.resource.instanceDetails.networkInterfaces.publicDnsName",
+                        "data.aws.resource.instanceDetails.networkInterfaces.subnetId",
+                        "data.aws.resource.instanceDetails.networkInterfaces.vpcId",
+                        "data.aws.resource.instanceDetails.tags.value",
+                        "data.aws.responseElements.AssociateVpcCidrBlockResponse.vpcId",
+                        "data.aws.responseElements.description",
+                        "data.aws.responseElements.instanceId",
+                        "data.aws.responseElements.instances.instanceId",
+                        "data.aws.responseElements.instancesSet.items.instanceId",
+                        "data.aws.responseElements.listeners.port",
+                        "data.aws.responseElements.loadBalancerName",
+                        "data.aws.responseElements.loadBalancers.vpcId",
+                        "data.aws.responseElements.loginProfile.userName",
+                        "data.aws.responseElements.networkAcl.vpcId",
+                        "data.aws.responseElements.ownerId",
+                        "data.aws.responseElements.publicIp",
+                        "data.aws.responseElements.user.userId",
+                        "data.aws.responseElements.user.userName",
+                        "data.aws.responseElements.volumeId",
+                        "data.aws.service.serviceName",
+                        "data.aws.severity",
+                        "data.aws.source",
+                        "data.aws.sourceIPAddress",
+                        "data.aws.srcport",
+                        "data.aws.userIdentity.accessKeyId",
+                        "data.aws.userIdentity.accountId",
+                        "data.aws.userIdentity.userName",
+                        "data.aws.vpcEndpointId",
+                        "data.command",
+                        "data.data",
+                        "data.docker.Actor.Attributes.container",
+                        "data.docker.Actor.Attributes.image",
+                        "data.docker.Actor.Attributes.name",
+                        "data.docker.Actor.ID",
+                        "data.docker.id",
+                        "data.docker.message",
+                        "data.docker.status",
+                        "data.dstip",
+                        "data.dstport",
+                        "data.dstuser",
+                        "data.extra_data",
+                        "data.hardware.serial",
+                        "data.id",
+                        "data.integration",
+                        "data.netinfo.iface.adapter",
+                        "data.netinfo.iface.ipv4.address",
+                        "data.netinfo.iface.ipv6.address",
+                        "data.netinfo.iface.mac",
+                        "data.netinfo.iface.name",
+                        "data.os.architecture",
+                        "data.os.build",
+                        "data.os.codename",
+                        "data.os.hostname",
+                        "data.os.major",
+                        "data.os.minor",
+                        "data.os.name",
+                        "data.os.platform",
+                        "data.os.release",
+                        "data.os.release_version",
+                        "data.os.sysname",
+                        "data.os.version",
+                        "data.oscap.check.description",
+                        "data.oscap.check.id",
+                        "data.oscap.check.identifiers",
+                        "data.oscap.check.oval.id",
+                        "data.oscap.check.rationale",
+                        "data.oscap.check.references",
+                        "data.oscap.check.result",
+                        "data.oscap.check.severity",
+                        "data.oscap.check.title",
+                        "data.oscap.scan.benchmark.id",
+                        "data.oscap.scan.content",
+                        "data.oscap.scan.id",
+                        "data.oscap.scan.profile.id",
+                        "data.oscap.scan.profile.title",
+                        "data.osquery.columns.address",
+                        "data.osquery.columns.command",
+                        "data.osquery.columns.description",
+                        "data.osquery.columns.dst_ip",
+                        "data.osquery.columns.gid",
+                        "data.osquery.columns.hostname",
+                        "data.osquery.columns.md5",
+                        "data.osquery.columns.path",
+                        "data.osquery.columns.sha1",
+                        "data.osquery.columns.sha256",
+                        "data.osquery.columns.src_ip",
+                        "data.osquery.columns.user",
+                        "data.osquery.columns.username",
+                        "data.osquery.name",
+                        "data.osquery.pack",
+                        "data.port.process",
+                        "data.port.protocol",
+                        "data.port.state",
+                        "data.process.args",
+                        "data.process.cmd",
+                        "data.process.egroup",
+                        "data.process.euser",
+                        "data.process.fgroup",
+                        "data.process.name",
+                        "data.process.rgroup",
+                        "data.process.ruser",
+                        "data.process.sgroup",
+                        "data.process.state",
+                        "data.process.suser",
+                        "data.program.architecture",
+                        "data.program.description",
+                        "data.program.format",
+                        "data.program.location",
+                        "data.program.multiarch",
+                        "data.program.name",
+                        "data.program.priority",
+                        "data.program.section",
+                        "data.program.source",
+                        "data.program.vendor",
+                        "data.program.version",
+                        "data.protocol",
+                        "data.pwd",
+                        "data.sca",
+                        "data.sca.check.compliance.cis",
+                        "data.sca.check.compliance.cis_csc",
+                        "data.sca.check.compliance.pci_dss",
+                        "data.sca.check.compliance.hipaa",
+                        "data.sca.check.compliance.nist_800_53",
+                        "data.sca.check.description",
+                        "data.sca.check.directory",
+                        "data.sca.check.file",
+                        "data.sca.check.id",
+                        "data.sca.check.previous_result",
+                        "data.sca.check.process",
+                        "data.sca.check.rationale",
+                        "data.sca.check.reason",
+                        "data.sca.check.references",
+                        "data.sca.check.registry",
+                        "data.sca.check.remediation",
+                        "data.sca.check.result",
+                        "data.sca.check.status",
+                        "data.sca.check.title",
+                        "data.sca.description",
+                        "data.sca.file",
+                        "data.sca.invalid",
+                        "data.sca.name",
+                        "data.sca.policy",
+                        "data.sca.policy_id",
+                        "data.sca.scan_id",
+                        "data.sca.total_checks",
+                        "data.script",
+                        "data.src_ip",
+                        "data.src_port",
+                        "data.srcip",
+                        "data.srcport",
+                        "data.srcuser",
+                        "data.status",
+                        "data.system_name",
+                        "data.title",
+                        "data.tty",
+                        "data.uid",
+                        "data.url",
+                        "data.virustotal.description",
+                        "data.virustotal.error",
+                        "data.virustotal.found",
+                        "data.virustotal.permalink",
+                        "data.virustotal.scan_date",
+                        "data.virustotal.sha1",
+                        "data.virustotal.source.alert_id",
+                        "data.virustotal.source.file",
+                        "data.virustotal.source.md5",
+                        "data.virustotal.source.sha1",
+                        "data.vulnerability.cve",
+                        "data.vulnerability.cvss.cvss2.base_score",
+                        "data.vulnerability.cvss.cvss2.exploitability_score",
+                        "data.vulnerability.cvss.cvss2.impact_score",
+                        "data.vulnerability.cvss.cvss2.vector.access_complexity",
+                        "data.vulnerability.cvss.cvss2.vector.attack_vector",
+                        "data.vulnerability.cvss.cvss2.vector.authentication",
+                        "data.vulnerability.cvss.cvss2.vector.availability",
+                        "data.vulnerability.cvss.cvss2.vector.confidentiality_impact",
+                        "data.vulnerability.cvss.cvss2.vector.integrity_impact",
+                        "data.vulnerability.cvss.cvss2.vector.privileges_required",
+                        "data.vulnerability.cvss.cvss2.vector.scope",
+                        "data.vulnerability.cvss.cvss2.vector.user_interaction",
+                        "data.vulnerability.cvss.cvss3.base_score",
+                        "data.vulnerability.cvss.cvss3.exploitability_score",
+                        "data.vulnerability.cvss.cvss3.impact_score",
+                        "data.vulnerability.cvss.cvss3.vector.access_complexity",
+                        "data.vulnerability.cvss.cvss3.vector.attack_vector",
+                        "data.vulnerability.cvss.cvss3.vector.authentication",
+                        "data.vulnerability.cvss.cvss3.vector.availability",
+                        "data.vulnerability.cvss.cvss3.vector.confidentiality_impact",
+                        "data.vulnerability.cvss.cvss3.vector.integrity_impact",
+                        "data.vulnerability.cvss.cvss3.vector.privileges_required",
+                        "data.vulnerability.cvss.cvss3.vector.scope",
+                        "data.vulnerability.cvss.cvss3.vector.user_interaction",
+                        "data.vulnerability.cwe_reference",
+                        "data.vulnerability.package.source",
+                        "data.vulnerability.package.architecture",
+                        "data.vulnerability.package.condition",
+                        "data.vulnerability.package.generated_cpe",
+                        "data.vulnerability.package.name",
+                        "data.vulnerability.package.version",
+                        "data.vulnerability.rationale",
+                        "data.vulnerability.severity",
+                        "data.vulnerability.title",
+                        "data.vulnerability.assigner",
+                        "data.vulnerability.cve_version",
+                        "data.win.eventdata.auditPolicyChanges",
+                        "data.win.eventdata.auditPolicyChangesId",
+                        "data.win.eventdata.binary",
+                        "data.win.eventdata.category",
+                        "data.win.eventdata.categoryId",
+                        "data.win.eventdata.data",
+                        "data.win.eventdata.image",
+                        "data.win.eventdata.ipAddress",
+                        "data.win.eventdata.ipPort",
+                        "data.win.eventdata.keyName",
+                        "data.win.eventdata.logonGuid",
+                        "data.win.eventdata.logonProcessName",
+                        "data.win.eventdata.operation",
+                        "data.win.eventdata.parentImage",
+                        "data.win.eventdata.processId",
+                        "data.win.eventdata.processName",
+                        "data.win.eventdata.providerName",
+                        "data.win.eventdata.returnCode",
+                        "data.win.eventdata.service",
+                        "data.win.eventdata.status",
+                        "data.win.eventdata.subcategory",
+                        "data.win.eventdata.subcategoryGuid",
+                        "data.win.eventdata.subcategoryId",
+                        "data.win.eventdata.subjectDomainName",
+                        "data.win.eventdata.subjectLogonId",
+                        "data.win.eventdata.subjectUserName",
+                        "data.win.eventdata.subjectUserSid",
+                        "data.win.eventdata.targetDomainName",
+                        "data.win.eventdata.targetLinkedLogonId",
+                        "data.win.eventdata.targetLogonId",
+                        "data.win.eventdata.targetUserName",
+                        "data.win.eventdata.targetUserSid",
+                        "data.win.eventdata.workstationName",
+                        "data.win.system.channel",
+                        "data.win.system.computer",
+                        "data.win.system.eventID",
+                        "data.win.system.eventRecordID",
+                        "data.win.system.eventSourceName",
+                        "data.win.system.keywords",
+                        "data.win.system.level",
+                        "data.win.system.message",
+                        "data.win.system.opcode",
+                        "data.win.system.processID",
+                        "data.win.system.providerGuid",
+                        "data.win.system.providerName",
+                        "data.win.system.securityUserID",
+                        "data.win.system.severityValue",
+                        "data.win.system.userID",
+                        "decoder.ftscomment",
+                        "decoder.name",
+                        "decoder.parent",
+                        "full_log",
+                        "host",
+                        "id",
+                        "input",
+                        "location",
+                        "manager.name",
+                        "message",
+                        "offset",
+                        "predecoder.hostname",
+                        "predecoder.program_name",
+                        "previous_log",
+                        "previous_output",
+                        "program_name",
+                        "rule.cis",
+                        "rule.cve",
+                        "rule.description",
+                        "rule.gdpr",
+                        "rule.gpg13",
+                        "rule.groups",
+                        "rule.id",
+                        "rule.info",
+                        "rule.mitre.id",
+                        "rule.mitre.tactic",
+                        "rule.mitre.technique",
+                        "rule.pci_dss",
+                        "rule.hipaa",
+                        "rule.nist_800_53",
+                        "syscheck.audit.effective_user.id",
+                        "syscheck.audit.effective_user.name",
+                        "syscheck.audit.group.id",
+                        "syscheck.audit.group.name",
+                        "syscheck.audit.login_user.id",
+                        "syscheck.audit.login_user.name",
+                        "syscheck.audit.process.id",
+                        "syscheck.audit.process.name",
+                        "syscheck.audit.process.ppid",
+                        "syscheck.audit.user.id",
+                        "syscheck.audit.user.name",
+                        "syscheck.diff",
+                        "syscheck.event",
+                        "syscheck.gid_after",
+                        "syscheck.gid_before",
+                        "syscheck.gname_after",
+                        "syscheck.gname_before",
+                        "syscheck.inode_after",
+                        "syscheck.inode_before",
+                        "syscheck.md5_after",
+                        "syscheck.md5_before",
+                        "syscheck.path",
+                        "syscheck.mode",
+                        "syscheck.perm_after",
+                        "syscheck.perm_before",
+                        "syscheck.sha1_after",
+                        "syscheck.sha1_before",
+                        "syscheck.sha256_after",
+                        "syscheck.sha256_before",
+                        "syscheck.tags",
+                        "syscheck.uid_after",
+                        "syscheck.uid_before",
+                        "syscheck.uname_after",
+                        "syscheck.uname_before",
+                        "title",
+                        "type",
+                        "GeoLocation.continent_name",
+                        "GeoLocation.latitude",
+                        "GeoLocation.location",
+                        "GeoLocation.longitude",
+                        "GeoLocation.region_code",
+                        "aws.cloudtrail.errorCode",
+                        "aws.cloudtrail.errorMessage",
+                        "aws.cloudtrail.eventType",
+                        "aws.cloudtrail.recipientAccountId",
+                        "aws.cloudtrail.requestID",
+                        "aws.cloudtrail.requestParameters.accessKeyId",
+                        "aws.cloudtrail.requestParameters.attemptingPrincipalArn",
+                        "aws.cloudtrail.requestParameters.autoScalingGroupName",
+                        "aws.cloudtrail.requestParameters.bucketName",
+                        "aws.cloudtrail.requestParameters.groupName",
+                        "aws.cloudtrail.requestParameters.instanceId",
+                        "aws.cloudtrail.requestParameters.loadBalancerName",
+                        "aws.cloudtrail.requestParameters.policyName",
+                        "aws.cloudtrail.requestParameters.roleName",
+                        "aws.cloudtrail.requestParameters.targets[0].id",
+                        "aws.cloudtrail.requestParameters.userName",
+                        "aws.cloudtrail.requestParameters.vpcId",
+                        "aws.cloudtrail.responseElements.consoleLogin",
+                        "aws.cloudtrail.responseElements.instancesSet.items[0].instanceId",
+                        "aws.cloudtrail.userIdentity.accessKeyId",
+                        "aws.cloudtrail.userIdentity.accountId",
+                        "aws.cloudtrail.userIdentity.arn",
+                        "aws.cloudtrail.userIdentity.principalId",
+                        "aws.cloudtrail.userIdentity.sessionContext.sessionIssuer.arn",
+                        "aws.cloudtrail.userIdentity.sessionContext.sessionIssuer.principalId",
+                        "aws.cloudtrail.userIdentity.sessionContext.sessionIssuer.type",
+                        "aws.cloudtrail.userIdentity.sessionContext.sessionIssuer.userName",
+                        "aws.cloudtrail.userIdentity.type",
+                        "aws.cloudtrail.userIdentity.userName",
+                        "aws.cloudwatch.namespace",
+                        "aws.s3.bucket.name",
+                        "aws.s3.configuration.id",
+                        "aws.s3.object.key",
+                        "aws.s3.object.sequencer",
+                        "aws.securityhub.findings[0].AwsAccountId",
+                        "aws.securityhub.findings[0].Description",
+                        "aws.securityhub.findings[0].GeneratorId",
+                        "aws.securityhub.findings[0].Id",
+                        "aws.securityhub.findings[0].ProductArn",
+                        "aws.securityhub.findings[0].ProductFields.aws/securityhub/SeverityLabel",
+                        "aws.securityhub.findings[0].Resources[0].Id",
+                        "aws.securityhub.findings[0].Resources[0].Region",
+                        "aws.securityhub.findings[0].Resources[0].Type",
+                        "aws.securityhub.findings[0].SchemaVersion",
+                        "aws.securityhub.findings[0].Title",
+                        "aws.securityhub.findings[0].Types[0]",
+                        "aws.securityhub.findings[0].UpdatedAt",
+                        "azure.activity.Status",
+                        "azure.activity.SubmissionTimestamp",
+                        "azure.activity.SubscriptionId",
+                        "azure.activity.properties.eventCategory",
+                        "azure.activity.properties.resourceProviderValue",
+                        "azure.activity.resourceId",
+                        "azure.diagnostic.Location",
+                        "azure.diagnostic.Resource",
+                        "azure.diagnostic.ResourceId",
+                        "azure.diagnostic.clientIpAddress",
+                        "azure.platformlogs.Category",
+                        "azure.platformlogs.Level",
+                        "azure.platformlogs.OperationName",
+                        "azure.platformlogs.OperationVersion",
+                        "azure.platformlogs.ResourceGroup",
+                        "azure.platformlogs.ResourceId",
+                        "azure.platformlogs.ResultSignature",
+                        "azure.platformlogs.ResultType",
+                        "azure.platformlogs.SourceSystem",
+                        "azure.platformlogs.Status",
+                        "azure.platformlogs.SubscriptionId",
+                        "azure.platformlogs.TenantId",
+                        "azure.platformlogs.callerIpAddress",
+                        "azure.platformlogs.category",
+                        "aws.waf.access_cloudfront.user_agent",
+                        "aws.waf.access_user_agent",
+                        "aws.waf.uri",
+                        "aws.waf.cloudfront.uri",
+                        "cis-cat.result.passed",
+                        "cis-cat.scan.azaccount_resourceManagerEndpointUrl",
+                        "cis-cat.scan.azaccount_tenantId",
+                        "cis-cat.scan.azaccount_time",
+                        "cis-cat.scan.azaccount_totalSubscriptions",
+                        "cis-cat.scan.result.message",
+                        "cis-cat.scan.result.probeCommand",
+                        "cis-cat.scan.result.success",
+                        "cis-cat.scan.rule.accountId",
+                        "cis-cat.scan.rule.activated",
+                        "cis-cat.scan.rule.audit.azure.resource.type",
+                        "cis-cat.scan.rule.id",
+                        "cis-cat.scan.rule.instance",
+                        "cis-cat.scan.rule.level",
+                        "cis-cat.scan.rule.profile",
+                        "cis-cat.scan.rule.scored",
+                        "cis-cat.scan.rule.section",
+                        "cis-cat.scan.rule.tag",
+                        "cis-cat.scan.rule.title",
+                        "cis-cat.scan.score",
+                        "cloud.account.id",
+                        "cloud.image.id",
+                        "cloud.instance.id",
+                        "cloud.instance.name",
+                        "cloud.machine.type",
+                        "cloud.provider",
+                        "cloud.region",
+                        "cloud.zone",
+                        "container.id",
+                        "container.image.id",
+                        "container.image.name",
+                        "container.labels",
+                        "container.name",
+                        "container.runtime",
+                        "customer*",
+                        "data.acl_id",
+                        "data.appID",
+                        "data.application",
+                        "data.authentication_method",
+                        "data.category_type",
+                        "data.ciscat.azure.cis.version",
+                        "data.ciscat.azure.subscription.id",
+                        "data.ciscat.azure.subscription.name",
+                        "data.cluster_namespace",
+                        "data.directory",
+                        "data.domain",
+                        "data.dst*",
+                        "data.editor",
+                        "data.element",
+                        "data.event",
+                        "data.file",
+                        "data.gcp*",
+                        "data.module",
+                        "data.name",
+                        "data.network.*",
+                        "data.oscap.benchmark.*",
+                        "data.oscap.scan.*",
+                        "data.package",
+                        "data.path",
+                        "data.platform",
+                        "data.plugin_id",
+                        "data.program_name",
+                        "data.provider",
+                        "data.query",
+                        "data.reason",
+                        "data.region",
+                        "data.src*",
+                        "data.state",
+                        "data.subpath",
+                        "data.target",
+                        "data.text",
+                        "data.type",
+                        "data.user",
+                        "data.username",
+                        "data.vulnerability.*",
+                        "data.win.system.*",
+                        "data.win.system.material.class.component.model",
+                        "data.win.system.material.class.component.vendor",
+                        "data.win.system.os.name",
+                        "decoder.priority",
+                        "ecs.version",
+                        "error",
+                        "event.id",
+                        "file.blocked",
+                        "file.checksum",
+                        "file.gid",
+                        "file.group",
+                        "file.hard_links",
+                        "file.inode",
+                        "file.mtime",
+                        "file.path",
+                        "file.perm",
+                        "file.size",
+                        "file.type",
+                        "file.uid",
+                        "gcp*",
+                        "geoip*",
+                        "groups",
+                        "imsi",
+                        "input.type",
+                        "integration",
+                        "ip.*",
+                        "k8s.*",
+                        "label.*",
+                        "labels",
+                        "log.debug",
+                        "log.format",
+                        "log.level",
+                        "log.offset",
+                        "log.source",
+                        "log.tag",
+                        "log_count",
+                        "manager",
+                        "node.*",
+                        "operator",
+                        "os.architecture",
+                        "os.codename",
+                        "os.full",
+                        "os.hostname",
+                        "os.id",
+                        "os.name",
+                        "os.platform",
+                        "os.version",
+                        "pid",
+                        "predecoder.*",
+                        "protocol",
+                        "qos_class_name",
+                        "qos_request",
+                        "query",
+                        "reason",
+                        "region.*",
+                        "resource.*",
+                        "rule.*",
+                        "rule.cis.*",
+                        "rule.firedtimes",
+                        "rule.group",
+                        "rule.level",
+                        "rule.mail",
+                        "rule.ts",
+                        "rule.url",
+                        "service.name",
+                        "severity",
+                        "src*",
+                        "srcgeoip*",
+                        "status",
+                        "syscheck.*",
+                        "syscollector.*",
+                        "syslog.*",
+                        "tags",
+                        "timestamp",
+                        "user.*",
+                        "vulnerability.*",
+                        "wazuh.*"
+                    ]
+                },
+                "number_of_replicas": "0"
+            }
+        },
+        "mappings": {
+            "dynamic_templates": [
+                {
+                    "strings_as_text_and_keyword": {
+                        "match_mapping_type": "string",
+                        "mapping": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        }
+                    }
+                }
+            ],
+            "date_detection": false,
+            "properties": {
+                "@timestamp": {
+                    "type": "date"
+                },
+                "@version": {
+                    "type": "text"
+                },
+                "GeoLocation": {
+                    "properties": {
+                        "area_code": {
+                            "type": "long"
+                        },
+                        "city_name": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "continent_code": {
+                            "type": "text"
+                        },
+                        "coordinates": {
+                            "type": "double"
+                        },
+                        "country_code2": {
+                            "type": "text"
+                        },
+                        "country_code3": {
+                            "type": "text"
+                        },
+                        "country_name": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "dma_code": {
+                            "type": "long"
+                        },
+                        "ip": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "latitude": {
+                            "type": "double"
+                        },
+                        "location": {
+                            "type": "geo_point"
+                        },
+                        "longitude": {
+                            "type": "double"
+                        },
+                        "postal_code": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "real_region_name": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "region_name": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "timezone": {
+                            "type": "text"
+                        },
+                        "continent_name": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword",
+                                    "ignore_above": 256
+                                }
+                            }
+                        },
+                        "region_code": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword",
+                                    "ignore_above": 256
+                                }
+                            }
+                        }
+                    }
+                },
+                "agent": {
+                    "properties": {
+                        "id": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "ip": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "name": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        }
+                    }
+                },
+                "cluster": {
+                    "properties": {
+                        "name": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "node": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        }
+                    }
+                },
+                "command": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword"
+                        }
+                    }
+                },
+                "data": {
+                    "properties": {
+                        "action": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "audit": {
+                            "properties": {
+                                "acct": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "arch": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "auid": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "command": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "cwd": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "dev": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "directory": {
+                                    "properties": {
+                                        "inode": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "mode": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "name": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "egid": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "enforcing": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "euid": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "exe": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "execve": {
+                                    "properties": {
+                                        "a0": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "a1": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "a2": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "a3": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "exit": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "file": {
+                                    "properties": {
+                                        "inode": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "mode": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "name": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "fsgid": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "fsuid": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "gid": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "id": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "key": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "list": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "old-auid": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "old-ses": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "old_enforcing": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "old_prom": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "op": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "pid": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "ppid": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "prom": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "res": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "session": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "sgid": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "srcip": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "subj": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "success": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "suid": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "syscall": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "tty": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "type": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "uid": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "aws": {
+                            "properties": {
+                                "accountId": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "bytes": {
+                                    "type": "long"
+                                },
+                                "createdAt": {
+                                    "type": "date"
+                                },
+                                "dstaddr": {
+                                    "type": "ip"
+                                },
+                                "end": {
+                                    "type": "date"
+                                },
+                                "log_info": {
+                                    "properties": {
+                                        "s3bucket": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "region": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "resource": {
+                                    "properties": {
+                                        "instanceDetails": {
+                                            "properties": {
+                                                "launchTime": {
+                                                    "type": "date"
+                                                },
+                                                "networkInterfaces": {
+                                                    "properties": {
+                                                        "privateIpAddress": {
+                                                            "type": "ip"
+                                                        },
+                                                        "publicIp": {
+                                                            "type": "ip"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "service": {
+                                    "properties": {
+                                        "action": {
+                                            "properties": {
+                                                "networkConnectionAction": {
+                                                    "properties": {
+                                                        "remoteIpDetails": {
+                                                            "properties": {
+                                                                "geoLocation": {
+                                                                    "type": "geo_point"
+                                                                },
+                                                                "ipAddressV4": {
+                                                                    "type": "ip"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "count": {
+                                            "type": "long"
+                                        },
+                                        "eventFirstSeen": {
+                                            "type": "date"
+                                        },
+                                        "eventLastSeen": {
+                                            "type": "date"
+                                        }
+                                    }
+                                },
+                                "source": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "source_ip_address": {
+                                    "type": "ip"
+                                },
+                                "srcaddr": {
+                                    "type": "ip"
+                                },
+                                "start": {
+                                    "type": "date"
+                                },
+                                "updatedAt": {
+                                    "type": "date"
+                                }
+                            }
+                        },
+                        "cis": {
+                            "properties": {
+                                "benchmark": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "error": {
+                                    "type": "long"
+                                },
+                                "fail": {
+                                    "type": "long"
+                                },
+                                "group": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "notchecked": {
+                                    "type": "long"
+                                },
+                                "pass": {
+                                    "type": "long"
+                                },
+                                "result": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "rule_title": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "score": {
+                                    "type": "long"
+                                },
+                                "timestamp": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "unknown": {
+                                    "type": "long"
+                                }
+                            }
+                        },
+                        "command": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "data": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "docker": {
+                            "properties": {
+                                "Action": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "Actor": {
+                                    "properties": {
+                                        "Attributes": {
+                                            "properties": {
+                                                "image": {
+                                                    "type": "text",
+                                                    "fields": {
+                                                        "keyword": {
+                                                            "type": "keyword"
+                                                        }
+                                                    }
+                                                },
+                                                "name": {
+                                                    "type": "text",
+                                                    "fields": {
+                                                        "keyword": {
+                                                            "type": "keyword"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "Type": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "dstip": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "dstport": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "dstuser": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "extra_data": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "gcp": {
+                            "properties": {
+                                "jsonPayload": {
+                                    "properties": {
+                                        "authAnswer": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "queryName": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "responseCode": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "vmInstanceId": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "vmInstanceName": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "resource": {
+                                    "properties": {
+                                        "labels": {
+                                            "properties": {
+                                                "location": {
+                                                    "type": "text",
+                                                    "fields": {
+                                                        "keyword": {
+                                                            "type": "keyword"
+                                                        }
+                                                    }
+                                                },
+                                                "project_id": {
+                                                    "type": "text",
+                                                    "fields": {
+                                                        "keyword": {
+                                                            "type": "keyword"
+                                                        }
+                                                    }
+                                                },
+                                                "source_type": {
+                                                    "type": "text",
+                                                    "fields": {
+                                                        "keyword": {
+                                                            "type": "keyword"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "type": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "severity": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "github": {
+                            "properties": {
+                                "action": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "actor": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "actor_location": {
+                                    "properties": {
+                                        "country_code": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "org": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "repo": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "hardware": {
+                            "properties": {
+                                "cpu_cores": {
+                                    "type": "long"
+                                },
+                                "cpu_mhz": {
+                                    "type": "double"
+                                },
+                                "cpu_name": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "ram_free": {
+                                    "type": "long"
+                                },
+                                "ram_total": {
+                                    "type": "long"
+                                },
+                                "ram_usage": {
+                                    "type": "long"
+                                },
+                                "serial": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "id": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "integration": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "netinfo": {
+                            "properties": {
+                                "iface": {
+                                    "properties": {
+                                        "adapter": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "ipv4": {
+                                            "properties": {
+                                                "address": {
+                                                    "type": "text",
+                                                    "fields": {
+                                                        "keyword": {
+                                                            "type": "keyword"
+                                                        }
+                                                    }
+                                                },
+                                                "broadcast": {
+                                                    "type": "text",
+                                                    "fields": {
+                                                        "keyword": {
+                                                            "type": "keyword"
+                                                        }
+                                                    }
+                                                },
+                                                "dhcp": {
+                                                    "type": "text",
+                                                    "fields": {
+                                                        "keyword": {
+                                                            "type": "keyword"
+                                                        }
+                                                    }
+                                                },
+                                                "gateway": {
+                                                    "type": "text",
+                                                    "fields": {
+                                                        "keyword": {
+                                                            "type": "keyword"
+                                                        }
+                                                    }
+                                                },
+                                                "metric": {
+                                                    "type": "long"
+                                                },
+                                                "netmask": {
+                                                    "type": "text",
+                                                    "fields": {
+                                                        "keyword": {
+                                                            "type": "keyword"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "ipv6": {
+                                            "properties": {
+                                                "address": {
+                                                    "type": "text",
+                                                    "fields": {
+                                                        "keyword": {
+                                                            "type": "keyword"
+                                                        }
+                                                    }
+                                                },
+                                                "broadcast": {
+                                                    "type": "text",
+                                                    "fields": {
+                                                        "keyword": {
+                                                            "type": "keyword"
+                                                        }
+                                                    }
+                                                },
+                                                "dhcp": {
+                                                    "type": "text",
+                                                    "fields": {
+                                                        "keyword": {
+                                                            "type": "keyword"
+                                                        }
+                                                    }
+                                                },
+                                                "gateway": {
+                                                    "type": "text",
+                                                    "fields": {
+                                                        "keyword": {
+                                                            "type": "keyword"
+                                                        }
+                                                    }
+                                                },
+                                                "metric": {
+                                                    "type": "long"
+                                                },
+                                                "netmask": {
+                                                    "type": "text",
+                                                    "fields": {
+                                                        "keyword": {
+                                                            "type": "keyword"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "mac": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "mtu": {
+                                            "type": "long"
+                                        },
+                                        "name": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "rx_bytes": {
+                                            "type": "long"
+                                        },
+                                        "rx_dropped": {
+                                            "type": "long"
+                                        },
+                                        "rx_errors": {
+                                            "type": "long"
+                                        },
+                                        "rx_packets": {
+                                            "type": "long"
+                                        },
+                                        "state": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "tx_bytes": {
+                                            "type": "long"
+                                        },
+                                        "tx_dropped": {
+                                            "type": "long"
+                                        },
+                                        "tx_errors": {
+                                            "type": "long"
+                                        },
+                                        "tx_packets": {
+                                            "type": "long"
+                                        },
+                                        "type": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "office365": {
+                            "properties": {
+                                "Actor": {
+                                    "properties": {
+                                        "ID": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "ClientIP": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "Operation": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "ResultStatus": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "Subscription": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "UserId": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "os": {
+                            "properties": {
+                                "architecture": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "build": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "codename": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "display_version": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "hostname": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "major": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "minor": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "name": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "patch": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "platform": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "release": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "release_version": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "sysname": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "version": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "oscap": {
+                            "properties": {
+                                "check": {
+                                    "properties": {
+                                        "description": {
+                                            "type": "text"
+                                        },
+                                        "id": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "identifiers": {
+                                            "type": "text"
+                                        },
+                                        "oval": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "text",
+                                                    "fields": {
+                                                        "keyword": {
+                                                            "type": "keyword"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "rationale": {
+                                            "type": "text"
+                                        },
+                                        "references": {
+                                            "type": "text"
+                                        },
+                                        "result": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "severity": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "title": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "scan": {
+                                    "properties": {
+                                        "benchmark": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "text",
+                                                    "fields": {
+                                                        "keyword": {
+                                                            "type": "keyword"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "content": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "id": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "profile": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "text",
+                                                    "fields": {
+                                                        "keyword": {
+                                                            "type": "keyword"
+                                                        }
+                                                    }
+                                                },
+                                                "title": {
+                                                    "type": "text",
+                                                    "fields": {
+                                                        "keyword": {
+                                                            "type": "keyword"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "return_code": {
+                                            "type": "long"
+                                        },
+                                        "score": {
+                                            "type": "double"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "osquery": {
+                            "properties": {
+                                "action": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "calendarTime": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "name": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "pack": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "port": {
+                            "properties": {
+                                "inode": {
+                                    "type": "long"
+                                },
+                                "local_ip": {
+                                    "type": "ip"
+                                },
+                                "local_port": {
+                                    "type": "long"
+                                },
+                                "pid": {
+                                    "type": "long"
+                                },
+                                "process": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "protocol": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "remote_ip": {
+                                    "type": "ip"
+                                },
+                                "remote_port": {
+                                    "type": "long"
+                                },
+                                "rx_queue": {
+                                    "type": "long"
+                                },
+                                "state": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "tx_queue": {
+                                    "type": "long"
+                                }
+                            }
+                        },
+                        "process": {
+                            "properties": {
+                                "args": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "cmd": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "egroup": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "euser": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "fgroup": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "name": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "nice": {
+                                    "type": "long"
+                                },
+                                "nlwp": {
+                                    "type": "long"
+                                },
+                                "pgrp": {
+                                    "type": "long"
+                                },
+                                "pid": {
+                                    "type": "long"
+                                },
+                                "ppid": {
+                                    "type": "long"
+                                },
+                                "priority": {
+                                    "type": "long"
+                                },
+                                "processor": {
+                                    "type": "long"
+                                },
+                                "resident": {
+                                    "type": "long"
+                                },
+                                "rgroup": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "ruser": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "session": {
+                                    "type": "long"
+                                },
+                                "sgroup": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "share": {
+                                    "type": "long"
+                                },
+                                "size": {
+                                    "type": "long"
+                                },
+                                "start_time": {
+                                    "type": "long"
+                                },
+                                "state": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "stime": {
+                                    "type": "long"
+                                },
+                                "suser": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "tgid": {
+                                    "type": "long"
+                                },
+                                "tty": {
+                                    "type": "long"
+                                },
+                                "utime": {
+                                    "type": "long"
+                                },
+                                "vm_size": {
+                                    "type": "long"
+                                }
+                            }
+                        },
+                        "program": {
+                            "properties": {
+                                "architecture": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "description": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "format": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "install_time": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "location": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "multiarch": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "name": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "priority": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "section": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "size": {
+                                    "type": "long"
+                                },
+                                "source": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "vendor": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "version": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "protocol": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "sca": {
+                            "properties": {
+                                "check": {
+                                    "properties": {
+                                        "compliance": {
+                                            "properties": {
+                                                "cis": {
+                                                    "type": "text",
+                                                    "fields": {
+                                                        "keyword": {
+                                                            "type": "keyword"
+                                                        }
+                                                    }
+                                                },
+                                                "cis_csc": {
+                                                    "type": "text",
+                                                    "fields": {
+                                                        "keyword": {
+                                                            "type": "keyword"
+                                                        }
+                                                    }
+                                                },
+                                                "hipaa": {
+                                                    "type": "text",
+                                                    "fields": {
+                                                        "keyword": {
+                                                            "type": "keyword"
+                                                        }
+                                                    }
+                                                },
+                                                "nist_800_53": {
+                                                    "type": "text",
+                                                    "fields": {
+                                                        "keyword": {
+                                                            "type": "keyword"
+                                                        }
+                                                    }
+                                                },
+                                                "pci_dss": {
+                                                    "type": "text",
+                                                    "fields": {
+                                                        "keyword": {
+                                                            "type": "keyword"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "description": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "directory": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "file": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "id": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "previous_result": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "process": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "rationale": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "reason": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "references": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "registry": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "remediation": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "result": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "title": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "description": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "failed": {
+                                    "type": "integer"
+                                },
+                                "file": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "invalid": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "name": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "passed": {
+                                    "type": "integer"
+                                },
+                                "policy": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "policy_id": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "scan_id": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "score": {
+                                    "type": "long"
+                                },
+                                "total_checks": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "type": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "srcip": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "srcport": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "srcuser": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "status": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "system_name": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "timestamp": {
+                            "type": "date"
+                        },
+                        "title": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "type": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "uid": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "url": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "virustotal": {
+                            "properties": {
+                                "description": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "error": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "found": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "malicious": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "permalink": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "positives": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "scan_date": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "sha1": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "source": {
+                                    "properties": {
+                                        "alert_id": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "file": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "md5": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "sha1": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "total": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "vulnerability": {
+                            "properties": {
+                                "assigner": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "cve": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "cve_version": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "cvss": {
+                                    "properties": {
+                                        "cvss2": {
+                                            "properties": {
+                                                "base_score": {
+                                                    "type": "text",
+                                                    "fields": {
+                                                        "keyword": {
+                                                            "type": "keyword"
+                                                        }
+                                                    }
+                                                },
+                                                "exploitability_score": {
+                                                    "type": "text",
+                                                    "fields": {
+                                                        "keyword": {
+                                                            "type": "keyword"
+                                                        }
+                                                    }
+                                                },
+                                                "impact_score": {
+                                                    "type": "text",
+                                                    "fields": {
+                                                        "keyword": {
+                                                            "type": "keyword"
+                                                        }
+                                                    }
+                                                },
+                                                "vector": {
+                                                    "properties": {
+                                                        "access_complexity": {
+                                                            "type": "text",
+                                                            "fields": {
+                                                                "keyword": {
+                                                                    "type": "keyword"
+                                                                }
+                                                            }
+                                                        },
+                                                        "attack_vector": {
+                                                            "type": "text",
+                                                            "fields": {
+                                                                "keyword": {
+                                                                    "type": "keyword"
+                                                                }
+                                                            }
+                                                        },
+                                                        "authentication": {
+                                                            "type": "text",
+                                                            "fields": {
+                                                                "keyword": {
+                                                                    "type": "keyword"
+                                                                }
+                                                            }
+                                                        },
+                                                        "availability": {
+                                                            "type": "text",
+                                                            "fields": {
+                                                                "keyword": {
+                                                                    "type": "keyword"
+                                                                }
+                                                            }
+                                                        },
+                                                        "confidentiality_impact": {
+                                                            "type": "text",
+                                                            "fields": {
+                                                                "keyword": {
+                                                                    "type": "keyword"
+                                                                }
+                                                            }
+                                                        },
+                                                        "integrity_impact": {
+                                                            "type": "text",
+                                                            "fields": {
+                                                                "keyword": {
+                                                                    "type": "keyword"
+                                                                }
+                                                            }
+                                                        },
+                                                        "privileges_required": {
+                                                            "type": "text",
+                                                            "fields": {
+                                                                "keyword": {
+                                                                    "type": "keyword"
+                                                                }
+                                                            }
+                                                        },
+                                                        "scope": {
+                                                            "type": "text",
+                                                            "fields": {
+                                                                "keyword": {
+                                                                    "type": "keyword"
+                                                                }
+                                                            }
+                                                        },
+                                                        "user_interaction": {
+                                                            "type": "text",
+                                                            "fields": {
+                                                                "keyword": {
+                                                                    "type": "keyword"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "cvss3": {
+                                            "properties": {
+                                                "base_score": {
+                                                    "type": "text",
+                                                    "fields": {
+                                                        "keyword": {
+                                                            "type": "keyword"
+                                                        }
+                                                    }
+                                                },
+                                                "exploitability_score": {
+                                                    "type": "text",
+                                                    "fields": {
+                                                        "keyword": {
+                                                            "type": "keyword"
+                                                        }
+                                                    }
+                                                },
+                                                "impact_score": {
+                                                    "type": "text",
+                                                    "fields": {
+                                                        "keyword": {
+                                                            "type": "keyword"
+                                                        }
+                                                    }
+                                                },
+                                                "vector": {
+                                                    "properties": {
+                                                        "access_complexity": {
+                                                            "type": "text",
+                                                            "fields": {
+                                                                "keyword": {
+                                                                    "type": "keyword"
+                                                                }
+                                                            }
+                                                        },
+                                                        "attack_vector": {
+                                                            "type": "text",
+                                                            "fields": {
+                                                                "keyword": {
+                                                                    "type": "keyword"
+                                                                }
+                                                            }
+                                                        },
+                                                        "authentication": {
+                                                            "type": "text",
+                                                            "fields": {
+                                                                "keyword": {
+                                                                    "type": "keyword"
+                                                                }
+                                                            }
+                                                        },
+                                                        "availability": {
+                                                            "type": "text",
+                                                            "fields": {
+                                                                "keyword": {
+                                                                    "type": "keyword"
+                                                                }
+                                                            }
+                                                        },
+                                                        "confidentiality_impact": {
+                                                            "type": "text",
+                                                            "fields": {
+                                                                "keyword": {
+                                                                    "type": "keyword"
+                                                                }
+                                                            }
+                                                        },
+                                                        "integrity_impact": {
+                                                            "type": "text",
+                                                            "fields": {
+                                                                "keyword": {
+                                                                    "type": "keyword"
+                                                                }
+                                                            }
+                                                        },
+                                                        "privileges_required": {
+                                                            "type": "text",
+                                                            "fields": {
+                                                                "keyword": {
+                                                                    "type": "keyword"
+                                                                }
+                                                            }
+                                                        },
+                                                        "scope": {
+                                                            "type": "text",
+                                                            "fields": {
+                                                                "keyword": {
+                                                                    "type": "keyword"
+                                                                }
+                                                            }
+                                                        },
+                                                        "user_interaction": {
+                                                            "type": "text",
+                                                            "fields": {
+                                                                "keyword": {
+                                                                    "type": "keyword"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "cwe_reference": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "package": {
+                                    "properties": {
+                                        "architecture": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "condition": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "generated_cpe": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "name": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "source": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "version": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "published": {
+                                    "type": "date"
+                                },
+                                "rationale": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "severity": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "title": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "updated": {
+                                    "type": "date"
+                                }
+                            }
+                        }
+                    }
+                },
+                "decoder": {
+                    "properties": {
+                        "accumulate": {
+                            "type": "long"
+                        },
+                        "fts": {
+                            "type": "long"
+                        },
+                        "ftscomment": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "name": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "parent": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "priority": {
+                            "type": "keyword"
+                        }
+                    }
+                },
+                "full_log": {
+                    "type": "text"
+                },
+                "host": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword"
+                        }
+                    }
+                },
+                "id": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword"
+                        }
+                    }
+                },
+                "input": {
+                    "properties": {
+                        "type": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        }
+                    }
+                },
+                "location": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword"
+                        }
+                    }
+                },
+                "manager": {
+                    "properties": {
+                        "name": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        }
+                    }
+                },
+                "message": {
+                    "type": "text"
+                },
+                "offset": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword"
+                        }
+                    }
+                },
+                "predecoder": {
+                    "properties": {
+                        "hostname": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "program_name": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "timestamp": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        }
+                    }
+                },
+                "previous_log": {
+                    "type": "text"
+                },
+                "previous_output": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword"
+                        }
+                    }
+                },
+                "program_name": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword"
+                        }
+                    }
+                },
+                "rule": {
+                    "properties": {
+                        "cis": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "cve": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "description": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "firedtimes": {
+                            "type": "long"
+                        },
+                        "frequency": {
+                            "type": "long"
+                        },
+                        "gdpr": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "gpg13": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "groups": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "hipaa": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "id": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "info": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "level": {
+                            "type": "long"
+                        },
+                        "mail": {
+                            "type": "boolean"
+                        },
+                        "mitre": {
+                            "properties": {
+                                "id": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "tactic": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                },
+                                "technique": {
+                                    "type": "text",
+                                    "fields": {
+                                        "keyword": {
+                                            "type": "keyword"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "nist_800_53": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "pci_dss": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "tsc": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "group": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword",
+                                    "ignore_above": 256
+                                }
+                            }
+                        },
+                        "ts": {
+                            "type": "keyword"
+                        },
+                        "url": {
+                            "type": "keyword"
+                        }
+                    }
+                },
+                "syscheck": {
+                    "properties": {
+                        "audit": {
+                            "properties": {
+                                "effective_user": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "name": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "group": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "name": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "login_user": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "name": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "process": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "name": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "ppid": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "user": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        },
+                                        "name": {
+                                            "type": "text",
+                                            "fields": {
+                                                "keyword": {
+                                                    "type": "keyword"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "diff": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "event": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "gid_after": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "gid_before": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "gname_after": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "gname_before": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "hard_links": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "inode_after": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "inode_before": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "md5_after": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "md5_before": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "mode": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "mtime_after": {
+                            "type": "date",
+                            "format": "date_optional_time"
+                        },
+                        "mtime_before": {
+                            "type": "date",
+                            "format": "date_optional_time"
+                        },
+                        "path": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "perm_after": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "perm_before": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "sha1_after": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "sha1_before": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "sha256_after": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "sha256_before": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "size_after": {
+                            "type": "long"
+                        },
+                        "size_before": {
+                            "type": "long"
+                        },
+                        "tags": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "uid_after": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "uid_before": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "uname_after": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        },
+                        "uname_before": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword"
+                                }
+                            }
+                        }
+                    }
+                },
+                "timestamp": {
+                    "type": "date",
+                    "format": "date_optional_time||epoch_millis"
+                },
+                "title": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword"
+                        }
+                    }
+                },
+                "type": {
+                    "type": "text"
+                }
+            }
+        },
+        "aliases": {}
+    },
+    "version": 1,
+    "_meta": {
+        "description": "Derived from Wazuh default: all string fields are text with .keyword; dynamic strings also text+keyword."
+    }
+}

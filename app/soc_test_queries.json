@@ -1,0 +1,264 @@
+{
+  "description": "SOC team test queries for SIEM RAG Pipeline — all three indices (alerts / elastalert / vulnerabilities). Use POST http://localhost:8000/query with Content-Type: application/json. The 'source' field selects the index: alerts | elastalert | vulnerabilities | auto (default).",
+  "soc_levels": {
+    "L1": "Tier-1 analyst — alert triage, quick counts, initial classification",
+    "L2": "Tier-2 analyst — investigation, correlation, rule tuning, severity-driven hunting",
+    "L3": "Tier-3 analyst / threat hunter — semantic hunting, cross-index analysis, vulnerability research"
+  },
+  "query_types": {
+
+    "aggregation": {
+      "description": "Counts, rankings, and breakdowns. Triggered by: top, count, average, sum. Routes to index-specific aggregation based on source field.",
+      "queries": [
+        {
+          "id": "agg-1",
+          "soc_level": "L1",
+          "source_index": "alerts",
+          "title": "Top source IPs (Wazuh alerts)",
+          "body": { "query": "top source IPs in last 24 hours", "session_id": "soc-agg-1", "source": "alerts" }
+        },
+        {
+          "id": "agg-2",
+          "soc_level": "L1",
+          "source_index": "elastalert",
+          "title": "Top fired ElastAlert rules",
+          "body": { "query": "top 10 elastalert rules triggered", "session_id": "soc-agg-2", "source": "elastalert" }
+        },
+        {
+          "id": "agg-3",
+          "soc_level": "L1",
+          "source_index": "vulnerabilities",
+          "title": "Top CVEs by severity",
+          "body": { "query": "count vulnerabilities by severity", "session_id": "soc-agg-3", "source": "vulnerabilities" }
+        },
+        {
+          "id": "agg-4",
+          "soc_level": "L2",
+          "source_index": "alerts",
+          "title": "Severity breakdown per agent",
+          "body": { "query": "count alerts per agent with severity breakdown", "session_id": "soc-agg-4", "source": "alerts" }
+        },
+        {
+          "id": "agg-5",
+          "soc_level": "L2",
+          "source_index": "vulnerabilities",
+          "title": "Most affected packages with critical CVEs",
+          "body": { "query": "top packages with critical vulnerabilities count", "session_id": "soc-agg-5", "source": "vulnerabilities" }
+        }
+      ]
+    },
+
+    "hybrid": {
+      "description": "kNN + BM25 hybrid search across the target index. Best for threat hunting and specific keyword queries.",
+      "queries": [
+        {
+          "id": "hybrid-1",
+          "soc_level": "L1",
+          "source_index": "alerts",
+          "title": "SSH brute force attempts (Wazuh)",
+          "body": { "query": "brute force ssh login attempts", "session_id": "soc-hybrid-1", "source": "alerts" }
+        },
+        {
+          "id": "hybrid-2",
+          "soc_level": "L1",
+          "source_index": "elastalert",
+          "title": "Brute force rule triggered in ElastAlert",
+          "body": { "query": "brute force rule fired alert triggered", "session_id": "soc-hybrid-2", "source": "elastalert" }
+        },
+        {
+          "id": "hybrid-3",
+          "soc_level": "L2",
+          "source_index": "alerts",
+          "title": "Privilege escalation / sudo abuse",
+          "body": { "query": "privilege escalation sudo root access", "session_id": "soc-hybrid-3", "source": "alerts" }
+        },
+        {
+          "id": "hybrid-4",
+          "soc_level": "L2",
+          "source_index": "vulnerabilities",
+          "title": "Unpatched critical CVE on Linux hosts",
+          "body": { "query": "critical unpatched vulnerability Linux package", "session_id": "soc-hybrid-4", "source": "vulnerabilities" }
+        },
+        {
+          "id": "hybrid-5",
+          "soc_level": "L3",
+          "source_index": "all",
+          "title": "Lateral movement — cross-index hunt",
+          "body": { "query": "lateral movement between hosts suspicious login", "session_id": "soc-hybrid-5", "source": "auto" }
+        }
+      ]
+    },
+
+    "severity_filter": {
+      "description": "Hybrid queries with per-index severity filtering. Alerts → rule.level (int 1-15). ElastAlert → alert_severity (low/medium/high/critical). Vulnerabilities → vuln_severity string + CVSS.",
+      "queries": [
+        {
+          "id": "sev-1",
+          "soc_level": "L1",
+          "source_index": "alerts",
+          "title": "High severity Wazuh alerts (level 10-15)",
+          "body": { "query": "show alerts with severity between 10 to 15", "session_id": "soc-sev-1", "source": "alerts" }
+        },
+        {
+          "id": "sev-2",
+          "soc_level": "L1",
+          "source_index": "elastalert",
+          "title": "High severity ElastAlert rules",
+          "body": { "query": "high severity elastalert rule triggered", "session_id": "soc-sev-2", "source": "elastalert" }
+        },
+        {
+          "id": "sev-3",
+          "soc_level": "L2",
+          "source_index": "vulnerabilities",
+          "title": "Critical vulnerabilities (CVSS ≥ 9)",
+          "body": { "query": "critical severity vulnerability CVE exploit", "session_id": "soc-sev-3", "source": "vulnerabilities" }
+        },
+        {
+          "id": "sev-4",
+          "soc_level": "L2",
+          "source_index": "alerts",
+          "title": "Medium severity alerts for investigation (level 6-8)",
+          "body": { "query": "alerts severity between 6 to 8 agents and source IPs", "session_id": "soc-sev-4", "source": "alerts" }
+        },
+        {
+          "id": "sev-5",
+          "soc_level": "L3",
+          "source_index": "vulnerabilities",
+          "title": "High severity CVEs on Windows hosts",
+          "body": { "query": "high severity vulnerability Windows package outdated", "session_id": "soc-sev-5", "source": "vulnerabilities" }
+        }
+      ]
+    },
+
+    "semantic": {
+      "description": "Pure vector similarity search. Triggered by: similar, like. Finds documents semantically close to the described pattern regardless of exact keywords.",
+      "queries": [
+        {
+          "id": "sem-1",
+          "soc_level": "L2",
+          "source_index": "alerts",
+          "title": "Alerts similar to port scan / recon",
+          "body": { "query": "alerts similar to port scan or network reconnaissance", "session_id": "soc-sem-1", "source": "alerts" }
+        },
+        {
+          "id": "sem-2",
+          "soc_level": "L2",
+          "source_index": "elastalert",
+          "title": "ElastAlert rules similar to C2 beacon detection",
+          "body": { "query": "rules like command and control C2 beacon detection", "session_id": "soc-sem-2", "source": "elastalert" }
+        },
+        {
+          "id": "sem-3",
+          "soc_level": "L2",
+          "source_index": "vulnerabilities",
+          "title": "Vulnerabilities similar to Log4Shell exploitation",
+          "body": { "query": "vulnerabilities similar to remote code execution Log4Shell", "session_id": "soc-sem-3", "source": "vulnerabilities" }
+        },
+        {
+          "id": "sem-4",
+          "soc_level": "L3",
+          "source_index": "alerts",
+          "title": "Alerts similar to ransomware file encryption",
+          "body": { "query": "events similar to ransomware file encryption mass write", "session_id": "soc-sem-4", "source": "alerts" }
+        },
+        {
+          "id": "sem-5",
+          "soc_level": "L3",
+          "source_index": "all",
+          "title": "Cross-index: data exfiltration pattern",
+          "body": { "query": "events similar to data exfiltration outbound large transfer", "session_id": "soc-sem-5", "source": "auto" }
+        }
+      ]
+    },
+
+    "follow_up": {
+      "description": "Returns the cached result of the previous query in the same session. Use the same session_id as a prior query. Triggered by: 'previous result', 'those alerts', 'from above results'.",
+      "queries": [
+        {
+          "id": "follow-1",
+          "soc_level": "L1",
+          "source_index": "alerts",
+          "title": "Re-show previous alert results",
+          "note": "Use the session_id from a prior hybrid query (e.g. soc-hybrid-1)",
+          "body": { "query": "show previous result", "session_id": "soc-hybrid-1", "source": "alerts" }
+        },
+        {
+          "id": "follow-2",
+          "soc_level": "L1",
+          "source_index": "elastalert",
+          "title": "Re-show previous ElastAlert aggregation",
+          "note": "Use the session_id from a prior elastalert aggregation (e.g. soc-agg-2)",
+          "body": { "query": "those alerts from previous query", "session_id": "soc-agg-2", "source": "elastalert" }
+        },
+        {
+          "id": "follow-3",
+          "soc_level": "L2",
+          "source_index": "vulnerabilities",
+          "title": "Re-show previous vulnerability results",
+          "note": "Use the session_id from a prior vulnerability query (e.g. soc-sev-3)",
+          "body": { "query": "from above results show me more detail", "session_id": "soc-sev-3", "source": "vulnerabilities" }
+        },
+        {
+          "id": "follow-4",
+          "soc_level": "L2",
+          "source_index": "alerts",
+          "title": "Repeat last severity-filtered hunt",
+          "note": "Use the session_id from the severity filter query (e.g. soc-sev-4)",
+          "body": { "query": "show me previous result for this session", "session_id": "soc-sev-4", "source": "alerts" }
+        },
+        {
+          "id": "follow-5",
+          "soc_level": "L3",
+          "source_index": "all",
+          "title": "Repeat last cross-index semantic hunt",
+          "note": "Use the session_id from the cross-index semantic query (e.g. soc-sem-5)",
+          "body": { "query": "from above results show me more detail", "session_id": "soc-sem-5", "source": "auto" }
+        }
+      ]
+    },
+
+    "time_filtered": {
+      "description": "Any query type with explicit time range (ISO 8601 start_time / end_time). Overrides the default 24h window. Works across all source indices.",
+      "queries": [
+        {
+          "id": "time-1",
+          "soc_level": "L1",
+          "source_index": "alerts",
+          "title": "Wazuh brute force in a 2-hour window",
+          "body": { "query": "brute force ssh login attempts", "session_id": "soc-time-1", "source": "alerts", "start_time": "2026-04-16T00:00:00", "end_time": "2026-04-16T02:00:00" }
+        },
+        {
+          "id": "time-2",
+          "soc_level": "L1",
+          "source_index": "elastalert",
+          "title": "ElastAlert rules fired in evening window",
+          "body": { "query": "top elastalert rules triggered", "session_id": "soc-time-2", "source": "elastalert", "start_time": "2026-04-15T18:00:00", "end_time": "2026-04-15T23:59:59" }
+        },
+        {
+          "id": "time-3",
+          "soc_level": "L2",
+          "source_index": "vulnerabilities",
+          "title": "Critical vulnerabilities detected today",
+          "body": { "query": "critical vulnerability CVE detected", "session_id": "soc-time-3", "source": "vulnerabilities", "start_time": "2026-04-16T00:00:00", "end_time": "2026-04-16T23:59:59" }
+        },
+        {
+          "id": "time-4",
+          "soc_level": "L2",
+          "source_index": "alerts",
+          "title": "Malware detections over a full day",
+          "body": { "query": "malware detected suspicious process file", "session_id": "soc-time-4", "source": "alerts", "start_time": "2026-04-15T00:00:00", "end_time": "2026-04-15T23:59:59" }
+        },
+        {
+          "id": "time-5",
+          "soc_level": "L3",
+          "source_index": "all",
+          "title": "Cross-index investigation — overnight window",
+          "body": { "query": "suspicious login lateral movement failed authentication", "session_id": "soc-time-5", "source": "auto", "start_time": "2026-04-15T22:00:00", "end_time": "2026-04-16T06:00:00", "size": 50 }
+        }
+      ]
+    }
+
+  }
+}
+
+        

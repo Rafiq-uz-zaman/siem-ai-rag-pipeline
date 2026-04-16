@@ -1,0 +1,19 @@
+###
+POST http://0.0.0.0:8000/query
+Content-Type: application/json
+
+{ "query": "brute force rule fired alert triggered", "session_id": "soc-hybrid-2", "source": "elastalert" }
+
+
+
+# {"query": "show me severity greater than 5 and less than 10 of agents ips", "session_id": "test-2"}
+
+# {"query": "how many numbers of events of above ips", "session_id": "test-1"}
+
+
+# {"query": "brute force ssh attacks", "session_id": "test-1"}
+
+# {
+#     "query": "What are the top 5 most common alert types in the last 24 hours?",
+#     "session_id": "test-session-123"
+# }
